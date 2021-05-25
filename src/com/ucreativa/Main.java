@@ -9,7 +9,16 @@ public class Main {
     public static void main(String[] args) {
 
         johancel test = new johancel();
-        eva test1 = new eva();
+
+        eva mama = new eva();
+
+        mama.setAge();
+
+        int age = mama.getAge();
+        System.out.println(("Age is = " + age));
+        System.out.println("Hobby is = " + mama.getHobby());
 
     }
-}
+
+
+}//end
