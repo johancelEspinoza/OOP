@@ -1,8 +1,10 @@
 package com.ucreativa.familia;
 
-public class johancel {
+public class johancel extends eva{
 
-    public johancel(){
-        System.out.println("Hello World");
+    public johancel(String saludo,
+                    int age,
+                    String hobby){
+       super(saludo, age, hobby);
     }
 }

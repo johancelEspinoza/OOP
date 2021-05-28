@@ -5,22 +5,25 @@ public class eva {
     private int age;
     private String hobby;
 
-    public eva(){
-        this.age = 45;
-        this.hobby = "Coser";
-        System.out.println("Saludo");
+    public eva(String saludo,
+               int age,
+               String hobby) {
+
+        this.age = age;
+        this.hobby = hobby;
+        System.out.println(saludo);
     }
 
-    public String getHobby(){
-        return hobby;
+    public int getAge(){
+        return this.age;
     }
 
     public void setAge(){
-    this.age = this.age + 1;
+        this.age = this.age + 1;
     }
 
-     public int getAge(){
-        return this.age;
-     }
+    public String getHobby() {
+        return this.hobby;
+    }
 }//end
 
