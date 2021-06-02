@@ -1,8 +1,8 @@
 package com.ucreativa.familia;
 
-public class johancel extends eva{
+public class Johancel extends Eva {
 
-    public johancel(String saludo,
+    public Johancel(String saludo,
                     int age,
                     String hobby){
        super(saludo, age, hobby);

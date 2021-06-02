@@ -1,11 +1,11 @@
 package com.ucreativa.familia;
 
-public class eva {
+public class Eva {
 
     private int age;
     private String hobby;
 
-    public eva(String saludo,
+    public Eva(String saludo,
                int age,
                String hobby) {
 
