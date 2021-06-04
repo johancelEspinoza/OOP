@@ -8,32 +8,60 @@ import com.ucreativa.vacunacion.entities.Persona;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Main {
 
     public static void main(String[] args) {
 
-        Familiar mama = new Familiar("Eva", "123",
-                70, true, "Madre");
+        Scanner in = new Scanner(System.in);
+        List<BitacoraVacunas> db = new ArrayList<>();
+        Persona persona;
+    while (true) {
+        String nombre, cedula, edad, riesgo, isAmigo, relacion, facebook, parentesco, marca;
 
-        Familiar hermano = new Familiar("Jefferson","123", 19, false,
-                "Hermano");
+        System.out.print("Nombre: ");
+        nombre = in.nextLine();
 
-        Amigo compaTrabajo = new Amigo("Steven","145",26, true,
-                "Amigo");
+        System.out.print("Cedula: ");
+        cedula = in.nextLine();
 
-        List<Persona> familia = new ArrayList<>();
-        familia.add(mama);
-        familia.add(hermano);
-        familia.add(compaTrabajo);
+        System.out.print("Edad: ");
+        edad = in.nextLine();
 
-        List<BitacoraVacunas> bitacora = new ArrayList<>();
-        bitacora.add(new BitacoraVacunas(mama, "Pfizer", new Date()));
-        bitacora.add(new BitacoraVacunas(hermano, "Astrasenica", new Date()));
-        bitacora.add(new BitacoraVacunas(compaTrabajo, "Johnson", new Date()));
+        System.out.print("Riesgo(S/N): ");
+        riesgo = in.nextLine();
+
+        System.out.print("Amigo(a) / Familiar(F): ");
+        isAmigo = in.nextLine();
+        if (isAmigo.equals("A")) {
+            System.out.println("Relacion: ");
+            relacion = in.nextLine();
+            System.out.println("Facebook: ");
+            facebook = in.nextLine();
+            persona = new Amigo(nombre, cedula, Integer.parseInt(edad), riesgo.equals("S"),
+                     facebook);
+        } else {
+            System.out.println("Parentesco: ");
+            parentesco = in.nextLine();
+            persona = new Familiar(nombre, cedula, Integer.parseInt(edad), riesgo.equals("S"),
+                    parentesco);
+        }
+        System.out.println("Vacuna -- Marca: ");
+        marca = in.nextLine();
+
+        db.add(new BitacoraVacunas(persona, marca, new Date()));
+        System.out.println("Quire imprimir Lista (S)");
+        String print = in.nextLine();
+        if (print.equals("S")) {
+            for (BitacoraVacunas item : db) {
+                System.out.println(item.getPersona().getNombre() + "vacunado el: " + item.getFecha());
+            }
+        }
 
 
+    }
     }
 
 
