@@ -4,6 +4,7 @@ import com.ucreativa.vacunacion.entities.Amigo;
 import com.ucreativa.vacunacion.entities.Familiar;
 import com.ucreativa.vacunacion.entities.Persona;
 import com.ucreativa.vacunacion.repositories.Repository;
+import com.ucreativa.vacunacion.ui.ErrorEnEdadExcep;
 
 import java.util.Date;
 import java.util.List;
@@ -19,10 +20,15 @@ public class BitacoraService {
         public void save(String nombre, String cedula,
                         String txtEdad, boolean riesgo, boolean isAmigo,
                         String relacion, String facebook,
-                         String parentesco, String marca) {
+                         String parentesco, String marca) throws ErrorEnEdadExcep {
 
 
-            int edad = Integer.parseInt(txtEdad);
+            int edad;
+            try {
+                edad = Integer.parseInt(txtEdad);
+            } catch (NumberFormatException x) {
+                throw  new ErrorEnEdadExcep(txtEdad);
+            }
 
             Persona persona;
             if (isAmigo) {
