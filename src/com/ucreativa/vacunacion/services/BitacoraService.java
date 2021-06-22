@@ -12,9 +12,12 @@ import java.util.List;
 public class BitacoraService {
 
     private Repository repository;
+    private ContadorRiesgo contador;
 
     public BitacoraService (Repository repository) {
+
         this.repository = repository;
+        this.contador = ContadorRiesgo.getInstance();
     }
 
         public void save(String nombre, String cedula,
@@ -29,6 +32,9 @@ public class BitacoraService {
             } catch (NumberFormatException x) {
                 throw  new ErrorEnEdadExcep(txtEdad);
             }
+            if (riesgo) {
+                this.contador.SumarRiesgo();
+            }
 
             Persona persona;
             if (isAmigo) {
@@ -38,8 +44,11 @@ public class BitacoraService {
             }
             this.repository.save(persona, marca, new Date());
         }
+
        public List<String> get(){
-            return this.repository.get();
+        System.out.println("La cantidad de personas con riesgo es: "+
+                this.contador.getCantidadRiesgo());
+        return this.repository.get();
         }
 
 }//end
