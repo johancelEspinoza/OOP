@@ -53,6 +53,7 @@ public class FrontEnd extends JFrame {
 
         JCheckBox txtRiesgo = new JCheckBox();
         JCheckBox txtEsAmigo = new JCheckBox();
+
         txtEsAmigo.addActionListener(new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
